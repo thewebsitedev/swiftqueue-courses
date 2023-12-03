@@ -1,0 +1,16 @@
+{
+    "name": "gautamthapar/swiftqueue-test",
+    "autoload": {
+        "psr-4": {
+            "Swiftqueue\\": "app/",
+            "Swiftqueue\\Core\\": "core/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Gautam Thapar",
+            "email": "thewebsitedev@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}
