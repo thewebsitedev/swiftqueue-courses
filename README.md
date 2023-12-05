@@ -5,9 +5,9 @@ This is a repository for the Swiftqueue Courses API made entirely in vanilla PHP
 ### Requirements
 
 To run the API, you need to have the following technologies installed:
-* [PHP](https://www.php.net/)
-* [MySQL](https://www.mysql.com/)
-* [Composer](https://getcomposer.org/)
+* [PHP](https://www.php.net/) [v8.2.0]
+* [MySQL](https://www.mysql.com/) [v5.7.39]
+* [Composer](https://getcomposer.org/) [latest]
 
 Or you can use [MAMP](https://www.mamp.info/en/) or [XAMPP](https://www.apachefriends.org/index.html) to install all of the above.
 

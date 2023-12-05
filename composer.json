@@ -3,7 +3,13 @@
     "autoload": {
         "psr-4": {
             "Swiftqueue\\": "app/",
-            "Swiftqueue\\Core\\": "core/"
+            "Swiftqueue\\Controllers\\": "app/controllers",
+            "Swiftqueue\\Models\\": "app/models",
+            "Swiftqueue\\Core\\": "core/",
+            "Swiftqueue\\Core\\Controller\\": "core/controller/",
+            "Swiftqueue\\Core\\Middleware\\": "core/middleware/",
+            "Swiftqueue\\Core\\Database\\": "core/database/",
+            "Swiftqueue\\Core\\Http\\": "core/http/"
         }
     },
     "authors": [
