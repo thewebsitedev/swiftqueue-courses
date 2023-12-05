@@ -30,7 +30,8 @@ $method = $request->method;
 $url_fragments = $request->url_fragments;
 
 // Basic RESTful routing
-if ('courses' === $url_fragments[3]) {
+$path = ( 'local' === $_ENV['ENV'] ) ? $url_fragments[3] : $url_fragments[2];
+if (isset($path) && 'courses' === $path) {
     switch ($method) {
         case 'GET':
             $id = isset( $_GET['id'] ) ? $_GET['id'] : null;
@@ -52,7 +53,7 @@ if ('courses' === $url_fragments[3]) {
         default:
             echo json_encode(['message' => 'Method Not Allowed']);
     }
-} elseif('users' === $url_fragments[3]) {
+} elseif(isset($path) && 'users' === $path) {
     switch ($method) {
         case 'POST':
             $user_controller->create_user();

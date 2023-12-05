@@ -27,7 +27,8 @@ $method = $request->method;
 $url_fragments = $request->url_fragments;
 
 // Basic RESTful routing
-if(isset($url_fragments[3]) && 'users' === $url_fragments[3]) {
+$path = ( 'local' === $_ENV['ENV'] ) ? $url_fragments[3] : $url_fragments[2];
+if(isset($path) && 'users' === $path) {
     switch ($method) {
         case 'POST':
             $register = $request->get('register');

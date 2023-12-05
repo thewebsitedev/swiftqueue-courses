@@ -24,7 +24,7 @@ class Request {
         $this->url           = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $this->full_url      = $_SERVER['REQUEST_URI'];
         $this->url_fragments = explode('/', $this->url);
-        $this->contentType   = $_SERVER['CONTENT_TYPE'];
+        $this->contentType   = isset( $_SERVER['CONTENT_TYPE'] ) ? $_SERVER['CONTENT_TYPE'] : '';
 
         // Set the request data
         if ('POST' === $this->method && 'application/json' !== $this->contentType) {
