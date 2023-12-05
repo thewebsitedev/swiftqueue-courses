@@ -4,6 +4,7 @@ namespace Swiftqueue\Core\Database;
 
 /**
  * Class AbstractModel
+ *
  * @package Swiftqueue\Core\Database
  */
 abstract class AbstractDatabase

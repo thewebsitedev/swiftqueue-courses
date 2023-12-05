@@ -7,6 +7,7 @@ use Swiftqueue\Models\Course;
 
 /**
  * Class AbstractController
+ *
  * @package Swiftqueue\Core\Controller
  */
 abstract class AbstractController

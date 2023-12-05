@@ -8,6 +8,7 @@ use Swiftqueue\Core\Database\AbstractDatabase;
 
 /**
  * Class Database
+ *
  * @package Swiftqueue\Models
  */
 class Database extends AbstractDatabase
@@ -16,14 +17,23 @@ class Database extends AbstractDatabase
     protected $db_name = "swiftqueue";
     protected $username = "root";
     protected $password = "root";
-    protected $table_name = "courses";
+    protected $table_courses = "courses";
+    protected $table_users = "users";
     protected $conn;
 
+    /**
+     * Database constructor.
+     */
     public function __construct()
     {
         parent::__construct();
     }
 
+    /**
+     * Get the database connection
+     *
+     * @return PDO
+     */
     public function get_connection()
     {
         try {
@@ -33,10 +43,12 @@ class Database extends AbstractDatabase
 
             // Check if database exists and create it if not
             $this->create_database();
-            // Now connect to the specific database
+            // Connect to the database
             $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
             // Create courses table if not exists
             $this->create_table_courses();
+            // Create users table if not exists
+            $this->create_table_users();
         } catch (PDOException $exception) {
             echo "Connection error: " . $exception->getMessage();
         }
@@ -44,6 +56,9 @@ class Database extends AbstractDatabase
         return $this->conn;
     }
 
+    /**
+     * Create the database if it doesn't exist
+     */
     protected function create_database()
     {
         try {
@@ -54,19 +69,44 @@ class Database extends AbstractDatabase
         }
     }
 
+    /**
+     * Create the courses table if it doesn't exist
+     */
     protected function create_table_courses()
     {
         try {
-            $sql = "CREATE TABLE IF NOT EXISTS " . $this->table_name . " (
+            $sql = "CREATE TABLE IF NOT EXISTS " . $this->table_courses . " (
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 name VARCHAR(255) NOT NULL,
-                start_date DATE,
-                end_date DATE,
+                start_date DATETIME,
+                end_date DATETIME,
                 status VARCHAR(100)
             )";
             $this->conn->exec($sql);
         } catch (PDOException $exception) {
             echo "Table creation failed: " . $exception->getMessage();
+        }
+    }
+
+    /**
+     * Create the users table if it doesn't exist
+     */
+    protected function create_table_users()
+    {
+        try {
+            $sql = "CREATE TABLE IF NOT EXISTS " . $this->table_users . " (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                email VARCHAR(255) UNIQUE NOT NULL,
+                password VARCHAR(255) NOT NULL,
+                first_name VARCHAR(50),
+                last_name VARCHAR(50),
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+                role VARCHAR(20)
+            )";
+            $this->conn->exec($sql);
+        } catch (PDOException $exception) {
+            echo "Users table creation failed: " . $exception->getMessage();
         }
     }
 }
