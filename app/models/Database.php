@@ -13,12 +13,8 @@ use Swiftqueue\Core\Database\AbstractDatabase;
  */
 class Database extends AbstractDatabase
 {
-    protected $host = "localhost";
-    protected $db_name = "swiftqueue";
-    protected $username = "root";
-    protected $password = "root";
     protected $table_courses = "courses";
-    protected $table_users = "users";
+    protected $table_users   = "users";
     protected $conn;
 
     /**
@@ -27,6 +23,11 @@ class Database extends AbstractDatabase
     public function __construct()
     {
         parent::__construct();
+
+        $this->host = isset($_ENV['DB_HOST']) ? $_ENV['DB_HOST'] : $this->host;
+        $this->db_name = isset($_ENV['DB_NAME']) ? $_ENV['DB_NAME'] : $this->db_name;
+        $this->username = isset($_ENV['DB_USERNAME']) ? $_ENV['DB_USERNAME'] : $this->username;
+        $this->password = isset($_ENV['DB_PASSWORD']) ? $_ENV['DB_PASSWORD'] : $this->password;
     }
 
     /**

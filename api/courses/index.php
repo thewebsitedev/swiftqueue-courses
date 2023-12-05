@@ -7,6 +7,10 @@ use Swiftqueue\Core\Middleware\Cors;
 // Set the CORS headers for security
 Cors::setHeaders();
 
+// Load the environment variables
+$dotenv = Dotenv\Dotenv::createImmutable(dirname(__FILE__, 3));
+$dotenv->safeLoad();
+
 use Swiftqueue\Models\Database;
 use Swiftqueue\Core\Http\Request;
 use Swiftqueue\Controllers\CoursesController;
