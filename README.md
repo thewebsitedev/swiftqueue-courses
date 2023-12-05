@@ -21,6 +21,20 @@ git clone https://github.com/thewebsitedev/swiftqueue-courses.git
 
 You need to have some sort of server environment to run the courses. You can use [MAMP](https://www.mamp.info/en/) or [XAMPP](https://www.apachefriends.org/index.html) for this. If you are using MAMP, you need to put the courses in the `htdocs` folder. If you are using XAMPP, you need to put the courses in the `htdocs` folder.
 
+Make sure you have [Composer](https://getcomposer.org/) installed. Then, run the following command in your terminal:
+
+```bash
+composer require vlucas/phpdotenv
+```
+
+Then, run the following command in your terminal:
+
+```bash
+composer dump-autoload
+```
+
+Also make sure to update the environment variables in the `.env` file according to your setup.
+
 ### Usage
 
 To use the courses api, you need to have a browser installed. You can use [Google Chrome](https://www.google.com/chrome/) or [Mozilla Firefox](https://www.mozilla.org/en-US/firefox/new/). Then, open the browser and go to [http://localhost:8888/swiftqueue-test/api/courses/](http://localhost:8888/swiftqueue-test/api/courses/). You should see a list of the courses. Click on the course you want to view and you will be taken to the course page.
