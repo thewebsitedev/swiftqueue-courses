@@ -3,5 +3,9 @@
         "index.php": {
             "runtime": "vercel-php@0.6.0"
         }
-    }
+    },
+    "rewrites": [
+      { "source": "api/courses", "destination": "api/courses/index.php" },
+      { "source": "api/users", "destination": "api/users/index.php" }
+    ]
 }
