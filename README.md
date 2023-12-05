@@ -1,7 +1,15 @@
-# Swiftqueue Courses Readme
-## Swiftqueue Courses
+# Swiftqueue Courses API
 
-This is a repository for the Swiftqueue Courses API.
+This is a repository for the Swiftqueue Courses API made entirely in vanilla PHP. It is a RESTful API that allows you to create, read, update and delete courses. It also allows you to register and login users.
+
+### Requirements
+
+To run the API, you need to have the following technologies installed:
+* [PHP](https://www.php.net/)
+* [MySQL](https://www.mysql.com/)
+* [Composer](https://getcomposer.org/)
+
+Or you can use [MAMP](https://www.mamp.info/en/) or [XAMPP](https://www.apachefriends.org/index.html) to install all of the above.
 
 ### Installation
 
