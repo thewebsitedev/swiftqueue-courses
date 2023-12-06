@@ -6,7 +6,7 @@ use PDO;
 
 /**
  * Class Course
- *
+ * 
  * @package Swiftqueue\Models
  */
 class Course
@@ -53,7 +53,15 @@ class Course
     {
         $query = "SELECT * FROM " . $this->table_name;
         if ($status) {
-            $query .= " WHERE status = :status";
+            $status = $this->sanitize_text_field($status);
+            $status = explode(',', $status);
+            foreach ($status as $key => $value) {
+                if ($key === 0) {
+                    $query .= " WHERE status = '$value'";
+                } else {
+                    $query .= " OR status = '$value'";
+                }
+            }
         }
         if ( $search ) {
             $search = $this->sanitize_text_field($search);
@@ -72,10 +80,6 @@ class Course
 
         $stmt = $this->conn->prepare($query);
 
-        if ($status) {
-            $status = $this->sanitize_text_field($status);
-            $stmt->bindParam(':status', $status);
-        }
         if ($search) {
             $search = $this->sanitize_text_field($search);
             $stmt->bindParam(':search', $search);
